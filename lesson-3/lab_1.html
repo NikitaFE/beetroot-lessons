@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Lab 1</title>
+    <style>
+        .regpre {
+            line-height: 2;
+            margin: 1rem 0;
+            font-size: 2rem;
+        }
+        .regpre span {
+            background: #eee;
+            padding: 1px;
+            outline: 1px solid #999;
+            margin-right: 4px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <pre class="regpre" id="regpre"></pre>
+</div>
+
+<script>
+    const el = document.getElementById("regpre");
+
+    const out = (string, regExp) => el.innerHTML = string.replace(regExp, string => `<span>${string}</span>`);
+
+    const string = `Big cat, small cat and black CAT are sat on the hat. aaaaaaaaa.
+Product $100 55%. foobar foobar fooboo. This island is his, it is.
+01/09
+10-11
+10/10
+01-09
+01:09
+"Milton", "Waddams", "Initech, Inc."`;
+
+// Написать регулярное выражение, которое найдет:
+
+// 1. первое совпадения со словом «cat» в строке /cat/
+// 2. все совпадения со словом «cat» в строке /cat/g
+// 3. все совпадения со словом «cat» независимо от регистра /cat/gi
+// 4. все совпадения с шаблоном «*at», где * - любая буква /.at/gi
+// 5. точку /\./g
+// 6. пары из трех букв «а» подряд /a{3}/g
+// 7. все цифры /\d/g
+// 8. все буквы и цифры кроме знаков /\w/g || /[a-zA-Z0-9]/g
+// 9. все пробелы /\s/g
+// 10. все кроме цифр /\D/g
+// 11. все слова foobar и fooboo (группы) /foobar|fooboo/g
+// 12. отдельно стоящее слово is /\bis\b/g
+// 13. * все даты, которые начинаются с 01 и заканчиваются на 09,
+// находятся на любых строках и имею между собой любой разделитель /01.09/g
+
+    const regExp = /cat/;
+
+    out(string, regExp);
+
+</script>
+</body>
+</html>
