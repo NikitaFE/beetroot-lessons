@@ -12,6 +12,10 @@
       crossorigin="anonymous"
     />
     <style>
+      .container {
+        padding: 20px;
+      }
+
       .regpre {
         line-height: 2;
         margin: 1rem 0;
@@ -30,6 +34,13 @@
     </div>
 
     <script>
+      const regExpNumbers = /\d/g
+
+      const consoleCode = telephones => {
+        // const codes = telephones.forEach(telephone => telephone.filter(number => regExpNumbers.test(number)).filter((filteredNum, index) => index < 3));
+        console.log(telephones);
+      }
+
       const out = (string, regExp) =>
         (document.getElementById("regpre").innerHTML = string.replace(
           regExp,
@@ -37,21 +48,23 @@
         ));
 
       let string;
-      let regExp = //Your code here;
+      // let regExp = /(\(?\d{3}\)?[\- ]?[\d\-]{7,10})/g;
+      let regExp = /(\(?(\d{3})\)?[-\s]?\d{3}[-\s]?\d{4})/g;
 
       /*  ===========================================================
-Регулярным выраженим вытащить из строки string код оператора - первые 3 цифры
-и вывести эту информацию в консоль в виде
+      Регулярным выраженим вытащить из строки string код оператора - первые 3 цифры
+      и вывести эту информацию в консоль в виде
 
-Code: 063
-Code: 067
-Code: 099
-=================================================================  */
+      Code: 063
+      Code: 067
+      Code: 099
+      =================================================================  */
       string = `063-500-4444
 (067) 333-5555
 0994565423`;
 
       out(string, regExp);
+      consoleCode(string.split(regExp));
     </script>
   </body>
 </html>
