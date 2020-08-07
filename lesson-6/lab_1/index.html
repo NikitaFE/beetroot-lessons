@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function getUser(id, callback) {
+      setTimeout(() => {
+          console.log("Reading user from database ....");
+          callback({ id, name: "Bill" });
+      }, 2000);
+    }
+
+    function getRepos(user, fn) {
+        setTimeout(() => {
+          return fn(["repo1", "repo2", "repo3"])
+        }, 2000);
+    }
+
+    console.log("Begin");
+    getUser(1, function(user) {
+        console.log(user);
+        getRepos(user.name, function(repos) {
+          console.log(user);
+        })
+    });
+    console.log("After");
+  </script>
+</body>
+</html>
